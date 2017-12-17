@@ -4,21 +4,18 @@ import Gate as g
 import unittest
 
 class TestTestTest(unittest.TestCase):
+    def twoGateTest(self, pattern, func):#pattern(p, x1, x2)
+        map(lambda p : self.assertEqual(p[0], func((p[1], p[2]))), pattern)
+
     def test_and(self):
-        self.assertEqual(0, g.AND((0, 0)))
-        self.assertEqual(0, g.AND((0, 1)))
-        self.assertEqual(1, g.AND((1, 1)))
-        self.assertEqual(0, g.AND((1, 0)))
+        pat = [(0,0,0),(0,1,0),(1,1,1),(0,0,1)]
+        self.twoGateTest(pat, g.AND)
     def test_or(self):
-        self.assertEqual(0, g.OR((0, 0)))
-        self.assertEqual(1, g.OR((0, 1)))
-        self.assertEqual(1, g.OR((1, 1)))
-        self.assertEqual(1, g.OR((1, 0)))
+        pat = [(0,0,0),(1,1,0),(1,1,1),(1,0,1)]
+        self.twoGateTest(pat, g.OR)
     def test_NAND(self):
-        self.assertEqual(1, g.NAND((0, 0)))
-        self.assertEqual(1, g.NAND((0, 1)))
-        self.assertEqual(0, g.NAND((1, 1)))
-        self.assertEqual(1, g.NAND((1, 0)))
+        pat = [(1,0,0),(1,1,0),(0,1,1),(1,0,1)]
+        self.twoGateTest(pat, g.NAND)
 
 if __name__ == "__main__":
     unittest.main()
