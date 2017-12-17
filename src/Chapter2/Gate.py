@@ -14,3 +14,8 @@ def OR(signal):
 
 def NAND(signal):
     return GATE(map(lambda x: (x, -0.5), signal), 0.7, 0)
+
+def XOR(signal):
+    s1 = NAND(signal)
+    s2 = OR(signal)
+    return AND((s1, s2))
