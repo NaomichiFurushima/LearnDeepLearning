@@ -14,6 +14,11 @@ class TestTestTest(unittest.TestCase):
         self.assertEqual(1, g.OR((0, 1)))
         self.assertEqual(1, g.OR((1, 1)))
         self.assertEqual(1, g.OR((1, 0)))
+    def test_NAND(self):
+        self.assertEqual(1, g.NAND((0, 0)))
+        self.assertEqual(1, g.NAND((0, 1)))
+        self.assertEqual(0, g.NAND((1, 1)))
+        self.assertEqual(1, g.NAND((1, 0)))
 
 if __name__ == "__main__":
     unittest.main()
