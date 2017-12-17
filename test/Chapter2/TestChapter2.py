@@ -16,6 +16,9 @@ class TestTestTest(unittest.TestCase):
     def test_NAND(self):
         pat = [(1,0,0),(1,1,0),(0,1,1),(1,0,1)]
         self.twoGateTest(pat, g.NAND)
+    def test_XOR(self):
+        pat = [(0,0,0),(1,1,0),(0,1,1),(1,0,1)]
+        self.twoGateTest(pat, g.XOR)
 
 if __name__ == "__main__":
     unittest.main()
