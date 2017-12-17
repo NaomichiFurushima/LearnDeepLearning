@@ -6,6 +6,9 @@ import unittest
 class TestTestTest(unittest.TestCase):
     def test_and(self):
         self.assertEqual(0, g.AND([0, 0]))
+        self.assertEqual(0, g.AND([0, 1]))
+        self.assertEqual(1, g.AND([1, 1]))
+        self.assertEqual(0, g.AND([1, 0]))
 
 if __name__ == "__main__":
     unittest.main()
