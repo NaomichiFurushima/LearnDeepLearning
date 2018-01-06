@@ -1,5 +1,6 @@
 # coding: utf-8
 import sys, os
+import time
 sys.path.append(os.pardir)  # 親ディレクトリのファイルをインポートするための設定
 import numpy as np
 import pickle
@@ -35,6 +36,7 @@ def predict(network, x):
 x, t = get_data()
 network = init_network()
 accuracy_cnt = 0
+t1 = time.time()
 for i in range(len(x)):
     y = predict(network, x[i])
     p= np.argmax(y) # 最も確率の高い要素のインデックスを取得
@@ -42,3 +44,4 @@ for i in range(len(x)):
         accuracy_cnt += 1
 
 print("Accuracy:" + str(float(accuracy_cnt) / len(x)))
+print(f"elapsed time:{time.time() - t1}")

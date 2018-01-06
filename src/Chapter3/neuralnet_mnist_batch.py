@@ -2,6 +2,7 @@
 import sys, os
 sys.path.append(os.pardir)  # 親ディレクトリのファイルをインポートするための設定
 import numpy as np
+import time
 import pickle
 from dataset.mnist import load_mnist
 from common.functions import sigmoid, softmax
@@ -38,6 +39,7 @@ network = init_network()
 batch_size = 100 # バッチの数
 accuracy_cnt = 0
 
+t1 = time.time()
 for i in range(0, len(x), batch_size):
     x_batch = x[i:i+batch_size]
     y_batch = predict(network, x_batch)
@@ -45,3 +47,4 @@ for i in range(0, len(x), batch_size):
     accuracy_cnt += np.sum(p == t[i:i+batch_size])
 
 print("Accuracy:" + str(float(accuracy_cnt) / len(x)))
+print(f"elapsed time:{time.time() - t1}")
